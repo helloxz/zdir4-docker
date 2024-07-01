@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=4.0.2
+VERSION=4.0.3
 BASE_DIR="/opt/zdir"
 
 # 初始化环境
