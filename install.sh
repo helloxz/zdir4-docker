@@ -19,6 +19,9 @@ init() {
     date
     #为了精简镜像，可以将tzdata删除了
     apk del tzdata
+    # 设置DNS
+    echo "nameserver 119.29.29.29" > /etc/resolv.conf
+    echo "nameserver 223.5.5.5" >> /etc/resolv.conf
 
     #拷贝运行文件
     chmod +x /root/run.sh
