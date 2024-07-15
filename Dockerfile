@@ -3,6 +3,8 @@ RUN mkdir -p /opt/zdir
 WORKDIR /opt/zdir
 #复制启动文件
 COPY *.sh /root/
+# 定义架构参数
+ARG TARGETARCH
 # 安装
 RUN sh /root/install.sh ${TARGETARCH}
 # 暴露文件夹和端口
