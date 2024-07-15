@@ -10,7 +10,7 @@ ENV TARGETARCH=${TARGETARCH}
 # 打印架构信息以供调试
 RUN echo "Building for architecture: ${TARGETARCH}"
 # 安装
-RUN sh install.sh
+RUN sh /root/install.sh
 # 暴露文件夹和端口
 VOLUME /opt/zdir/data
 EXPOSE 6080
