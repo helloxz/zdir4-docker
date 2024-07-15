@@ -2,6 +2,8 @@
 
 VERSION=4.0.5
 BASE_DIR="/opt/zdir"
+# 获取架构
+ARCH=$1
 
 # 初始化环境
 init() {
@@ -19,10 +21,6 @@ init() {
     date
     #为了精简镜像，可以将tzdata删除了
     apk del tzdata
-    # 设置DNS
-    echo "nameserver 119.29.29.29" > /etc/resolv.conf
-    echo "nameserver 223.5.5.5" >> /etc/resolv.conf
-
     #拷贝运行文件
     chmod +x /root/run.sh
     cp /root/run.sh /usr/sbin/
@@ -31,7 +29,17 @@ init() {
 #下载Zdir
 download(){
     cd /root && mkdir zdir && cd zdir
-    name=zdir_${VERSION}_linux_amd64.tar.gz
+    if [ "$ARCH" = "amd64" ]; then
+        name=zdir_${VERSION}_linux_amd64.tar.gz
+    elif [ "$ARCH" = "arm64" ]; then
+        name=zdir_${VERSION}_linux_arm64.tar.gz
+    elif [ "$ARCH" = "arm/v7" ]; then
+        name=zdir_${VERSION}_linux_arm.tar.gz
+    else
+        echo "Unsupported architecture: $ARCH"
+        exit 1
+    fi
+    
     wget http://soft.xiaoz.org/zdir/${VERSION}/${name}
 
     #解压
@@ -44,27 +52,11 @@ download(){
     rm -rf /root/${name}
     rm -rf ${BASE_DIR}/*.tar.gz
 
-    # 下载ARM64架构
-    cd /tmp && mkdir zdir && cd zdir
-    name=zdir_${VERSION}_linux_arm64.tar.gz
-    wget http://soft.xiaoz.org/zdir/${VERSION}/${name}
-    #解压
-    tar -xvf ${name}
-    #拷贝文件
-    cp -ar /tmp/zdir/zdir ${BASE_DIR}/zdir_arm64
     #删除临时目录
     rm -rf /tmp/*
 
-    # 下载ARM架构
-    cd /tmp && mkdir zdir && cd zdir
-    name=zdir_${VERSION}_linux_arm.tar.gz
-    wget http://soft.xiaoz.org/zdir/${VERSION}/${name}
-    #解压
-    tar -xvf ${name}
-    #拷贝文件
-    cp -ar /tmp/zdir/zdir ${BASE_DIR}/zdir_arm
+    
     #删除临时目录
-    rm -rf /tmp/*
     rm -rf /root/zdir
 }
 
