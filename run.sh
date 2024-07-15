@@ -29,6 +29,7 @@ check_dir() {
 # 运行zdir
 run() {
     cd /opt/zdir/
+    chmod +x sh/*.sh
     # 设置DNS
     echo "nameserver 119.29.29.29" > /etc/resolv.conf
     echo "nameserver 223.5.5.5" >> /etc/resolv.conf
