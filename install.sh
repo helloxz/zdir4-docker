@@ -36,7 +36,7 @@ download(){
         name=zdir_${VERSION}_linux_amd64.tar.gz
     elif [ "$ARCH" = "arm64" ]; then
         name=zdir_${VERSION}_linux_arm64.tar.gz
-    elif [ "$ARCH" = "arm/v7" ]; then
+    elif [ "$ARCH" = "arm" ]; then
         name=zdir_${VERSION}_linux_arm.tar.gz
     else
         echo "Unsupported architecture: $ARCH"
