@@ -5,6 +5,10 @@ WORKDIR /opt/zdir
 COPY *.sh /root/
 # 定义架构参数
 ARG TARGETARCH
+ENV TARGETARCH=${TARGETARCH}
+
+# 打印架构信息以供调试
+RUN echo "Building for architecture: ${TARGETARCH}"
 # 安装
 RUN sh /root/install.sh ${TARGETARCH}
 # 暴露文件夹和端口
