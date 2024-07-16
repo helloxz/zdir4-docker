@@ -11,4 +11,7 @@ RUN sh /root/install.sh
 # 暴露文件夹和端口
 VOLUME /opt/zdir/data
 EXPOSE 6080
+# 添加健康检查
+HEALTHCHECK --interval=2m --timeout=30s --retries=3 \
+  CMD curl -f http://127.0.0.1:6080/ || exit 1
 CMD ["/usr/sbin/run.sh"]
