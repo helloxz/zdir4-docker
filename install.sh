@@ -1,12 +1,9 @@
 #!/bin/sh
 
-VERSION=4.0.4
+VERSION=4.0.6
 BASE_DIR="/opt/zdir"
 # 获取架构
 ARCH=${TARGETARCH}
-
-echo ${TARGETARCH}
-arch
 
 # 初始化环境
 init() {
