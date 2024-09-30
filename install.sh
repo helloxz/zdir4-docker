@@ -12,7 +12,7 @@ init() {
     #安装timezone
     apk add -U tzdata
     #安装必要软件
-    apk add curl wget
+    apk add curl wget fuse3
     #查看时区列表
     ls /usr/share/zoneinfo
     #拷贝需要的时区文件到localtime
