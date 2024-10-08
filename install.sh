@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=4.1.6
+VERSION=4.2.0
 BASE_DIR="/opt/zdir"
 # 获取架构
 ARCH=${TARGETARCH}
