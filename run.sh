@@ -42,4 +42,4 @@ run() {
     # fi
 }
 
-run
+upgrade && run
