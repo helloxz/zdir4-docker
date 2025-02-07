@@ -1,6 +1,8 @@
 #!/bin/sh
 ####    name:zdir运行脚本   #####
 
+BASE_DIR="/opt/zdir"
+
 # 运行zdir
 run() {
     cd /opt/zdir/
