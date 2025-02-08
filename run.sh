@@ -9,7 +9,6 @@ upgrade() {
     # 检查并删除指定文件
     if ls $BASE_DIR/zdir_*.tar.gz 1> /dev/null 2>&1; then
         # 删除不需要的文件
-        rm -rf $BASE_DIR/zdir
         rm -rf $BASE_DIR/templates/assets/default/*
         # 覆盖解压
         tar -xzvf $BASE_DIR/zdir_*.tar.gz -C $BASE_DIR
@@ -18,6 +17,7 @@ upgrade() {
         # 清理不需要的文件
         rm -f $BASE_DIR/zdir_*.tar.gz
     fi
+    sleep 2
 }
 
 # 运行zdir
